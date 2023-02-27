@@ -11,6 +11,10 @@
             content="width=device-width, initial-scale=1.0"
         />
         <link
+            rel="icon"
+            href="./assets/favicon-32x32.png"
+        />
+        <link
             rel="preconnect"
             href="https://fonts.googleapis.com"
         />
@@ -39,217 +43,188 @@
         <link rel="stylesheet" href="./style.css" />
     </head>
     <body>
-        <script
-            src="./src/index.js"
-            defer
-            type="module"
-        ></script>
-        <header>
-            <h1 class="text-center mb-3 mt-5">
-                Tic-Tac-Toe!
-                <i
-                    class="bi bi-dice-3"
-                    style="color: white"
-                    id="icon"
-                ></i>
-            </h1>
-        </header>
-        <div class="hr">
-            <hr />
-        </div>
-
-        <div class="modal" tabindex="-1" id="set-start">
+        <!-- Modal -->
+        <div
+            class="modal fade"
+            id="modal-win"
+            data-bs-backdrop="static"
+        >
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 id="title-modal">
-                            Who's going to start playing?
-                        </h5>
-                        <button
-                            type="button"
-                            id="btn-close-start"
-                            class="btn-close"
-                            data-bs-dismiss="modal"
-                            aria-label="Close"
-                        ></button>
-                    </div>
                     <div class="modal-body">
-                        <button
-                            type="button"
-                            class="btn btn-dark"
-                            data-bs-dismiss="modal"
-                            data-bs-toggle="modal"
-                            id="first-player"
+                        <p
+                            class="text-center"
+                            id="winner-player"
                         >
-                            Player 1
-                        </button>
-                        <button
-                            type="button"
-                            class="btn btn-dark ms-3"
-                            data-bs-dismiss="modal"
-                            data-bs-toggle="modal"
-                            id="second-player"
-                        >
-                            Player 2
-                        </button>
+                            PLAYER X WINS!
+                        </p>
+                        <h1 id="winner-text">
+                            <img
+                                src="./assets/icon-x.svg"
+                                alt=""
+                                class="me-3"
+                                id="winner-player-img"
+                            />
+                            TAKES THE ROUND
+                        </h1>
+                        <h1 id="restart-text">
+                            RESTART GAME?
+                        </h1>
+                        <div class="modal-btn">
+                            <button id="quit-btn">
+                                QUIT
+                            </button>
+                            <button id="next-round-btn">
+                                NEXT ROUND
+                            </button>
+                            <button id="cancel-btn">
+                                NO, CANCEL
+                            </button>
+                            <button id="restart-btn">
+                                YES, RESTART
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <section class="start-content container-fluid">
-            <div>
-                <label for="player1" id="label-player1"
-                    >X</label
+        <section class="start-content">
+            <img src="./assets/logo.svg" alt="" />
+            <div class="pick-player">
+                <span id="pick-player-title"
+                    >PICK PLAYER 1'S MARK</span
                 >
-                <input
-                    type="text"
-                    name="player1"
-                    id="player1"
-                    placeholder="Player's 1 Name"
-                />
+                <span class="start-icons">
+                    <span id="start-x">
+                        <img
+                            src="./assets/icon-x-dark.svg"
+                            alt=""
+                            id="start-x-img"
+                        />
+                    </span>
+                    <span id="start-o">
+                        <img
+                            src="./assets/icon-o-dark.svg"
+                            alt=""
+                            id="start-o-img"
+                        />
+                    </span>
+                </span>
+                <span id="pick-player-subtitle"
+                    >REMEMBER: X GOES FIRST
+                </span>
             </div>
-            <button id="start-btn">Start Game!</button>
-            <div>
-                <input
-                    type="text"
-                    name="player2"
-                    id="player2"
-                    placeholder="Player's 2 Name"
-                />
-                <label for="player2" id="label-player2"
-                    >O</label
-                >
-            </div>
+            <button id="start-btn">NEW GAME</button>
         </section>
-
-        <div class="warning w-25 p-3 fixed-top">
-            <div
-                class="alert alert-light alert-dismissible fade show"
-                role="alert"
-                id="warning-box"
-            >
-                <strong
-                    >Please, insert players' names</strong
-                >
-                <button
-                    type="button"
-                    class="btn-close"
-                    id="btn-close-warning"
-                    data-bs-dismiss="alert"
-                    aria-label="Close"
-                ></button>
-            </div>
-        </div>
-
         <section class="main-content">
-            <div class="player1-content">
-                <img
-                    id="player1-img"
-                    src="./images/boy.png"
-                    alt=""
-                    class="persons"
-                />
-                <img
-                    id="player1-winner"
-                    src="./images/boy-w.png"
-                    alt=""
-                    class="persons"
-                />
-                <div class="player1-text">
-                    <p id="player1-title">
-                        Player 1, you play with
-                        <span>X</span>
-                    </p>
-                    <p id="player1-results">
-                        Wins:
-                        <span id="player1-wins">0</span>
-                        - Losses:
-                        <span id="player1-losses"> 0</span>
-                    </p>
+            <div class="controls-container">
+                <div class="logo">
+                    <img src="./assets/logo.svg" alt="" />
+                </div>
+                <div class="controls">
+                    <span class="turn-player">
+                        <img
+                            src="./assets/icon-x-gray.svg"
+                            alt=""
+                            id="current-player-icon"
+                        />
+                        TURN</span
+                    >
+                    <button id="reload-btn">
+                        <img
+                            src="./assets/icon-restart.svg"
+                            alt=""
+                        />
+                    </button>
                 </div>
             </div>
-            <section id="gameBoard" class="gameBoard">
+            <div class="game-board">
                 <span
                     data-region="0.0"
                     class="cursor-pointer"
-                ></span>
+                    ><img src="" alt="" id="img-span-0.0"
+                /></span>
                 <span
                     data-region="0.1"
                     class="cursor-pointer"
-                ></span>
+                    ><img src="" alt="" id="img-span-0.1"
+                /></span>
                 <span
                     data-region="0.2"
                     class="cursor-pointer"
-                ></span>
+                    ><img src="" alt="" id="img-span-0.2"
+                /></span>
                 <span
                     data-region="1.0"
                     class="cursor-pointer"
-                ></span>
+                    ><img src="" alt="" id="img-span-1.0"
+                /></span>
                 <span
                     data-region="1.1"
                     class="cursor-pointer"
-                ></span>
+                    ><img src="" alt="" id="img-span-1.1"
+                /></span>
                 <span
                     data-region="1.2"
                     class="cursor-pointer"
-                ></span>
+                    ><img src="" alt="" id="img-span-1.2"
+                /></span>
                 <span
                     data-region="2.0"
                     class="cursor-pointer"
-                ></span>
+                    ><img src="" alt="" id="img-span-2.0"
+                /></span>
                 <span
                     data-region="2.1"
                     class="cursor-pointer"
-                ></span>
+                    ><img src="" alt="" id="img-span-2.1"
+                /></span>
                 <span
                     data-region="2.2"
                     class="cursor-pointer"
-                ></span>
-            </section>
-            <div class="player2-content">
-                <img
-                    id="player2-img"
-                    src="./images/girl.png"
-                    alt=""
-                    class="persons"
-                />
-                <img
-                    id="player2-winner"
-                    src="./images/girl-w.png"
-                    alt=""
-                    class="persons"
-                />
-                <div class="player2-text">
-                    <p id="player2-title">
-                        Player 2, you play with
-                        <span>O</span>
-                    </p>
-                    <p id="player2-results">
-                        Wins:
-                        <span id="player2-wins">0</span>
-                        - Losses:
-                        <span id="player2-losses">0</span>
-                    </p>
-                </div>
+                    ><img src="" alt="" id="img-span-2.2"
+                /></span>
+            </div>
+            <div class="score-container">
+                <span id="win-x">
+                    <span id="score-label-X">PLAYER 1</span>
+                    <span id="score-X">0</span>
+                </span>
+                <span id="ties"
+                    ><span id="score-label">TIES</span>
+                    <span id="score-ties">0</span>
+                </span>
+
+                <span id="win-y"
+                    ><span id="score-label-O">PLAYER O</span>
+                    <span id="score-O">0</span>
+                </span>
             </div>
         </section>
-
-        <section class="final-container">
-            <button
-                button
-                class="text-center"
-                id="play-again"
-            >
-                Play Again!
-            </button>
-            <button
-                button
-                class="text-center"
-                id="reset-game"
-            >
-                Reset Game.
-            </button>
-        </section>
+        <script src="./script.js"></script>
+        <!-- Script Bootstrap -->
+        <script
+            src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"
+        ></script>
+        <link
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous"
+        />
+        <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"
+        ></script>
+        <script type="text/javascript">
+            function OpenBootstrapPopup() {
+                $("#modal-win").modal("show");
+            }
+            function CloseBootstrapPopup() {
+                $("#modal-win").modal("hide");
+            }
+        </script>
     </body>
 </html>
