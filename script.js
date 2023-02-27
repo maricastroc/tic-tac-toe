@@ -2,6 +2,7 @@ const mainContent = document.querySelector(".main-content");
 const startContent = document.querySelector(
     ".start-content"
 );
+
 const allRegions = document.querySelectorAll(
     ".cursor-pointer"
 );
@@ -10,14 +11,18 @@ const quitBtn = document.getElementById("quit-btn");
 const nextRoundBtn = document.getElementById(
     "next-round-btn"
 );
+
 const restartBtn = document.getElementById("restart-btn");
 const cancelBtn = document.getElementById("cancel-btn");
+
 const currentPlayerIcon = document.getElementById(
     "current-player-icon"
 );
+
+const startBtn = document.getElementById("start-btn");
 const startX = document.getElementById("start-x");
 const startO = document.getElementById("start-o");
-const startBtn = document.getElementById("start-btn");
+
 let winnerSubtitle = document.getElementById(
     "winner-subtitle"
 );
@@ -51,9 +56,11 @@ startX.addEventListener("click", () => {
     startO.style = "background-color: #b6cfd9";
     document.getElementById("start-o-img").src =
         "./assets/icon-o-dark.svg";
+
     startX.style = "background-color: #1f3640";
     document.getElementById("start-x-img").src =
         "./assets/icon-x-gray.svg";
+
     firstPlayer = "playerX";
     scoreLabelX.innerText = "PLAYER 1";
     scoreLabelO.innerText = "PLAYER 2";
@@ -245,7 +252,7 @@ const handleBoardRegions = (ev) => {
     const winRegions = getWinRegions();
 
     if (winRegions.length > 0) {
-        handleWin();
+        handleWin(winRegions);
         OpenBootstrapPopup();
     } else if (vBoard.flat().includes("")) {
         if (player == "playerX") {
@@ -264,30 +271,15 @@ nextRoundBtn.addEventListener("click", () => {
     CloseBootstrapPopup();
 });
 
-const reloadModel = () => {
-    quitBtn.classList.remove("hide");
-    nextRoundBtn.classList.remove("hide");
-    cancelBtn.classList.add("hide");
-    restartBtn.classList.add("hide");
-    winnerText.classList.remove("hide");
-    winnerPlayer.classList.remove("hide");
-    restartText.classList.add("hide");
-};
-
 reloadBtn.addEventListener("click", () => {
-    winnerPlayer.classList.add("hide");
-    winnerText.classList.add("hide");
-    restartText.classList.remove("hide");
     root.style.setProperty("--winner-color", "#a8bfc8");
-    quitBtn.classList.add("hide");
-    nextRoundBtn.classList.add("hide");
+    restartText.classList.remove("hide");
     cancelBtn.classList.remove("hide");
     restartBtn.classList.remove("hide");
-    OpenBootstrapPopup();
+    OpenBootstrapPopup2();
 
     cancelBtn.addEventListener("click", () => {
-        CloseBootstrapPopup();
-        reloadModel();
+        CloseBootstrapPopup2();
     });
 
     restartBtn.addEventListener("click", () => {

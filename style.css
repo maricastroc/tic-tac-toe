@@ -256,6 +256,9 @@ body {
 }
 
 .modal-content {
+    display: block;
+    margin-top: 12rem;
+    max-width: 100vw;
     background-color: #16232a;
 }
 
@@ -340,4 +343,8 @@ body {
 
 .hide {
     display: none;
+}
+
+.win {
+    background-color: var(--winner-color);
 }

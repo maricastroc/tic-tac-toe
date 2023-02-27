@@ -46,8 +46,31 @@
         <!-- Modal -->
         <div
             class="modal fade"
+            id="modal-restart"
+        >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        </h1>
+                        <h1 id="restart-text">
+                            RESTART GAME?
+                        </h1>
+                        <div class="modal-btn">
+                            <button id="cancel-btn">
+                                NO, CANCEL
+                            </button>
+                            <button id="restart-btn">
+                                YES, RESTART
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div
+            class="modal fade"
             id="modal-win"
-            data-bs-backdrop="static"
         >
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -69,21 +92,12 @@
                                 >TAKES THE ROUND</span
                             >
                         </h1>
-                        <h1 id="restart-text">
-                            RESTART GAME?
-                        </h1>
                         <div class="modal-btn">
                             <button id="quit-btn">
                                 QUIT
                             </button>
                             <button id="next-round-btn">
                                 NEXT ROUND
-                            </button>
-                            <button id="cancel-btn">
-                                NO, CANCEL
-                            </button>
-                            <button id="restart-btn">
-                                YES, RESTART
                             </button>
                         </div>
                     </div>
@@ -228,6 +242,12 @@
             }
             function CloseBootstrapPopup() {
                 $("#modal-win").modal("hide");
+            }
+            function OpenBootstrapPopup2() {
+                $("#modal-restart").modal("show");
+            }
+            function CloseBootstrapPopup2() {
+                $("#modal-restart").modal("hide");
             }
         </script>
     </body>
