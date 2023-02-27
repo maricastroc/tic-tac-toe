@@ -18,6 +18,9 @@ const currentPlayerIcon = document.getElementById(
 const startX = document.getElementById("start-x");
 const startO = document.getElementById("start-o");
 const startBtn = document.getElementById("start-btn");
+let winnerSubtitle = document.getElementById(
+    "winner-subtitle"
+);
 let scoreLabelX = document.getElementById("score-label-X");
 let scoreLabelO = document.getElementById("score-label-O");
 
@@ -182,11 +185,13 @@ const disableRegion = (span) => {
 const handleWin = () => {
     if (player === "playerX") {
         scoreX++;
+        winnerSubtitle.innerText = "TAKES THE ROUND";
         winnerPlayer.innerText = "PLAYER X WINS!";
         winnerPlayerImg.src = "./assets/icon-x.svg";
         root.style.setProperty("--winner-color", "#31c4be");
     } else if (player === "playerO") {
         scoreO++;
+        winnerSubtitle.innerText = "TAKES THE ROUND";
         winnerPlayer.innerText = "PLAYER O WINS!";
         winnerPlayerImg.src = "./assets/icon-o.svg";
         root.style.setProperty("--winner-color", "#f1b331");
@@ -206,7 +211,7 @@ const handleDraw = () => {
     document.getElementById("score-ties").innerText =
         scoreTies;
 
-    winnerText.innerText = "ROUND TIED!";
+    winnerSubtitle.innerText = "ROUND TIED!";
 
     root.style.setProperty("--winner-color", "#a8bfc8");
 
