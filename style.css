@@ -27,7 +27,6 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 60rem;
 }
 
 .pick-player {
@@ -82,12 +81,14 @@ body {
 }
 
 #start-btn {
+    text-align: center;
     margin-top: 2rem;
+    padding: 0.7rem 0;
+    width: 100%;
+    text-align: center;
     font-weight: 600;
-    padding: 0.5rem 12.3rem;
     border: transparent;
     border-radius: 10px;
-    display: flex;
     background-color: #31c4be;
     box-shadow: 0px 6px 0 #307573;
     cursor: pointer;
@@ -99,11 +100,9 @@ body {
 }
 
 .controls-container {
-    display: grid;
-    grid-template-columns: 8rem 17.5rem;
+    display: flex;
     align-items: center;
     justify-content: space-between;
-    min-width: 100%;
 }
 
 .logo {
@@ -123,7 +122,6 @@ body {
 
 .turn-player {
     display: flex;
-    align-items: center;
     justify-content: center;
     text-align: center;
     color: #b6cfd9;
@@ -132,6 +130,7 @@ body {
     padding: 0.5rem 0.5rem;
     width: 8rem;
     border-radius: 10px;
+    margin-right: 1.6rem;
 }
 
 .turn-player img {
@@ -162,7 +161,6 @@ body {
     grid-template-rows: 8rem 8rem 8rem;
     gap: 1.4rem;
     margin: 2rem auto 4rem auto;
-    min-width: 100%;
     max-height: 25rem;
 }
 
@@ -347,4 +345,75 @@ body {
 
 .win {
     background-color: var(--winner-color);
+}
+
+@media (max-width: 530px) {
+    .start-icons span {
+        padding: 0.8rem 4rem;
+    }
+
+    .turn-player {
+        width: 6.2rem;
+        margin-right: 1.4rem;
+    }
+
+    .controls-container {
+        gap: 3rem;
+    }
+
+    .game-board {
+        grid-template-columns: 6.2rem 6.2rem 6.2rem;
+        grid-template-rows: 6.2rem 6.2rem 6.2rem;
+        margin: 2rem 0 2rem 0;
+    }
+
+    .score-container span {
+        height: 4rem;
+        width: 6rem;
+    }
+
+    .score-container {
+        grid-template-columns: 6.2rem 6.2rem 6.2rem;
+    }
+
+    .score-container span {
+        width: 6.2rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .start-icons span {
+        padding: 0.8rem 3rem;
+    }
+
+    .turn-player {
+        width: 5.5rem;
+        margin-right: 1.4rem;
+    }
+
+    .controls-container {
+        gap: 0;
+    }
+
+    .game-board {
+        grid-template-columns: 5.5rem 5.5rem 5.5rem;
+        grid-template-rows: 5.5rem 5.5rem 5.5rem;
+        margin: 2rem 0 2rem 0;
+        gap: 1.3rem;
+    }
+
+    .score-container span {
+        height: 4rem;
+        width: 5rem;
+    }
+
+    .score-container {
+        margin-top: 8rem;
+        grid-template-columns: 5.5rem 5.5rem 5.5rem;
+        grid-template-rows: 5.5rem 5.5rem 5.5rem;
+    }
+
+    .score-container span {
+        width: 5.3rem;
+    }
 }
